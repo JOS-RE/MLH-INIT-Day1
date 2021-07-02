@@ -1,0 +1,53 @@
+
+<div class="row">
+	<div class="col-xs-12 col-md-6">
+		<label >{{ 'label' | translate}}</label>
+		<div class="icon-label">
+			<div class="icon-picker" icon-picker="storedCredential"></div>
+			<input type="text" class="form-control" ng-model="storedCredential.label">
+		</div>
+		<label>{{ 'username' | translate}}</label>
+		<div>
+			<input type="text" ng-model="storedCredential.username">
+		</div>
+		<label>{{ 'email' | translate}}</label>
+		<div>
+			<input type="text" ng-model="storedCredential.email">
+		</div>
+		<label>{{ 'password' | translate}}</label>
+		<div>
+			<password-gen ng-model="storedCredential.password" settings="pwSettings" callback="pwGenerated"></password-gen>
+			<ng-password-meter password="storedCredential.password"></ng-password-meter>
+		</div>
+		<div>
+			<label>{{ 'password.r' | translate}}</label>
+			<input type="password" ng-model="storedCredential.password_repeat">
+		</div>
+		<label>{{ 'url' | translate}}</label>
+		<div>
+			<input type="text" ng-model="storedCredential.url">
+		</div>
+	</div>
+	<div class="col-xs-12 col-md-6">
+		<label>{{ 'notes' | translate}}</label>
+		<div>
+			<textarea class="credential_textarea" ng-model="storedCredential.description"></textarea>
+		</div>
+		<label>{{ 'add.tag' | translate}}</label>
+		<div class="tags_input">
+			<tags-input ng-model="storedCredential.tags" replace-spaces-with-dashes="false">
+				<auto-complete source="getTags($query)" min-length="0"></auto-complete>
+			</tags-input>
+		</div>
+	</div>
+	<div class="col-xs-12 col-md-6">
+		<button class="compromised-button" ng-click="compromise()">{{ 'compromised.label' | translate}}</button>
+		<div class="compromised-details" ng-show="storedCredential.compromised">
+			<div class="icon-error-color icon"></div>
+			<div class="text">{{ 'compromised.warning' | translate }}</div>
+
+		</div>
+	</div>
+</div>
+
+
